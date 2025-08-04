@@ -6,8 +6,9 @@ networks:
 services:
   ros-ouster:
     build:
-      context: ./.devcontainer
-    image: ros-ouster
+      context: .
+      dockerfile: ./.devcontainer/Dockerfile
+    image: alvarobajceps/ros-ouster
     container_name: ros-ouster
     hostname: ros-ouster
     init: true
@@ -20,7 +21,7 @@ services:
     volumes:
       - type: bind
         source: ./
-        target: /home/rex/raptor_ws
+        target: /mnt/local
         bind:
           create_host_path: true
       - type: bind

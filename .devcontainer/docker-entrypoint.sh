@@ -33,7 +33,7 @@ rm -f /tmp/rexlaunch.pgid # remove old PGID file
 
 if service ssh start; then
     # Change ssh port below to the one assigned in docker-compose.yml
-    echo "To connect to the container, use ssh rex@localhost -p [ssh-port-here]"
+    echo "To connect to the container, use ssh rex@localhost -p 2622"
     echo "Warn! SSH port above might be out of date. Please refer to docker-compose.yml for current configuration"
 fi
 

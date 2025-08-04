@@ -13,7 +13,7 @@ ARG PASSWORD='changeme'
 RUN apt update && apt upgrade -y
 
 # Install random stuff
-RUN DEBIAN_FRONTEND=noninteractive apt install -y git gdb nano curl wget python3 python3-pip net-tools apt-utils nano can-utils ssh libpaho-mqttpp-dev libpaho-mqtt-dev less iputils-ping bc rapidjson-dev iproute2
+RUN DEBIAN_FRONTEND=noninteractive apt install -y git gdb nano curl wget python3 python3-pip net-tools apt-utils nano ssh less iputils-ping bc rapidjson-dev iproute2
 
 # Random Stuff
 ENV NOTVISIBLE "in users profile"
@@ -39,8 +39,8 @@ RUN apt update && apt upgrade -y
 
 # Environment setup
 RUN mkdir /home/${USERNAME}/raptor_ws
-# Add required ros packages here
-RUN apt install -y ros-jazzy-ros2-socketcan libasio-dev libceres-dev ros-jazzy-diagnostic-updater ros-jazzy-diagnostic-updater ros-jazzy-rtcm-msgs ros-jazzy-nmea-msgs
+# Add required ros packages here # ros-jazzy-rviz2 is optional but required dunno.
+RUN apt install -y ros-jazzy-ros2-socketcan libasio-dev libceres-dev ros-jazzy-diagnostic-updater ros-jazzy-diagnostic-updater ros-jazzy-rtcm-msgs ros-jazzy-nmea-msgs ros-jazzy-pcl-ros libeigen3-dev libjsoncpp-dev libspdlog-dev libcurl4-openssl-dev
 
 # Fix github 'unsafe' directory
 USER ${USERNAME}

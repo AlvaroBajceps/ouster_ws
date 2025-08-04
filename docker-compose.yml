@@ -4,15 +4,15 @@ networks:
     external: true
 
 services:
-  ros-template:                     # replace every ros-template with appropriate name e.g. ros-quad-rover-kin
+  ros-ouster:
     build:
       context: ./.devcontainer
-    image: ros-template             # replace every ros-template with appropriate name e.g. ros-quad-rover-kin
-    container_name: ros-template    # replace every ros-template with appropriate name e.g. ros-quad-rover-kin
-    hostname: ros-template          # replace every ros-template with appropriate name e.g. ros-quad-rover-kin
+    image: ros-ouster
+    container_name: ros-ouster
+    hostname: ros-ouster
     init: true
     ports:
-      - "[ssh-port-here]:22"        # Assign ssh port here (left side) 2122 is reserved
+      - "2622:22"
     environment:
       - TZ=Europe/Warsaw
       - ROS_ENABLE_AUTOSTART=0

@@ -8,6 +8,8 @@ ENV ROS_BUILD_ON_STARTUP=on-failure
 # Dockerfile for ROS-JAZZY
 ARG USERNAME='rex'
 ARG PASSWORD='changeme'
+ARG GID=1000
+ARG UID=1000
 
 # Update the system
 RUN apt update && apt upgrade -y
@@ -21,7 +23,10 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 RUN ln -sf /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
 
 # Create user
-RUN useradd -m -s /bin/bash -g 1000 ${USERNAME}
+RUN groupadd -r -o -f -g ${GID} ${USERNAME}
+# ubuntu haters be like
+RUN userdel ubuntu
+RUN useradd -m -s /bin/bash -u ${UID} -g ${GID} ${USERNAME}
 RUN echo "${USERNAME}:${PASSWORD}" | chpasswd
 RUN usermod -aG sudo ${USERNAME}
 
@@ -39,8 +44,8 @@ RUN apt update && apt upgrade -y
 
 # Environment setup
 RUN mkdir /home/${USERNAME}/raptor_ws
-# Add required ros packages here # ros-jazzy-rviz2 is optional but required dunno.
-RUN apt install -y ros-jazzy-ros2-socketcan libasio-dev libceres-dev ros-jazzy-diagnostic-updater ros-jazzy-diagnostic-updater ros-jazzy-rtcm-msgs ros-jazzy-nmea-msgs ros-jazzy-pcl-ros libeigen3-dev libjsoncpp-dev libspdlog-dev libcurl4-openssl-dev
+# Add required ros packages here # ros-jazzy-rviz2 is optional but required dunno. installed rviz_common so anyway
+RUN apt install -y ros-jazzy-ros2-socketcan libasio-dev libceres-dev ros-jazzy-diagnostic-updater ros-jazzy-rtcm-msgs ros-jazzy-nmea-msgs ros-jazzy-pcl-ros ros-jazzy-geographic-msgs ros-jazzy-backward-ros ros-jazzy-bond ros-jazzy-bondcpp ros-jazzy-test-msgs ros-jazzy-behaviortree-cpp ros-jazzy-map-msgs ros-jazzy-ompl ros-jazzy-rviz-common ros-jazzy-rviz-default-plugins ros-jazzy-nav2-minimal-tb3-sim libeigen3-dev libjsoncpp-dev libspdlog-dev libcurl4-openssl-dev libopencv-dev libpcl-dev libqt5svg5-dev libqt5opengl5-dev libsqlite3-dev libproj-dev libyaml-cpp-dev libfreenect-dev libvtk9-qt-dev libvtk9-dev libgeographiclib-dev libboost-all-dev libtbb-dev libgraphicsmagick++-dev libnanoflann-dev nlohmann-json3-dev libbenchmark-dev
 
 # Fix github 'unsafe' directory
 USER ${USERNAME}

@@ -1,3 +1,12 @@
 [submodule "ouster-ros"]
 	path = ouster-ros
 	url = https://github.com/ouster-lidar/ouster-ros.git
+[submodule "rtabmap"]
+	path = rtabmap
+	url = https://github.com/introlab/rtabmap.git
+[submodule "robot_localization"]
+	path = robot_localization
+	url = https://github.com/cra-ros-pkg/robot_localization.git
+[submodule "navigation2"]
+	path = navigation2
+	url = https://github.com/ros-navigation/navigation2.git

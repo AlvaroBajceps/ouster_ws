@@ -1,18 +1,21 @@
-networks:
-  default:
-    name: ros-core-network          # This network is a direct dependency to ros-core container
-    external: true
+#networks:
+#  default:
+#    name: ros-core-network          # This network is a direct dependency to ros-core container
+#    external: true
 
 services:
   ros-ouster:
     build:
       context: ./.devcontainer
+      args:
+        GID: 1001
+        UID: 1001
     image: ros-ouster
     container_name: ros-ouster
     hostname: ros-ouster
     init: true
     ports:
-      - "2622:22"
+      - "127.0.0.1:2622:22"
     environment:
       - TZ=Europe/Warsaw
       - ROS_ENABLE_AUTOSTART=0

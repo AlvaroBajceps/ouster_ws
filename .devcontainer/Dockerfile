@@ -45,7 +45,7 @@ RUN apt update && apt upgrade -y
 # Environment setup
 RUN mkdir /home/${USERNAME}/raptor_ws
 # Add required ros packages here # ros-jazzy-rviz2 is optional but required dunno. installed rviz_common so anyway
-RUN apt install -y ros-jazzy-ros2-socketcan libasio-dev libceres-dev ros-jazzy-diagnostic-updater ros-jazzy-rtcm-msgs ros-jazzy-nmea-msgs ros-jazzy-pcl-ros ros-jazzy-geographic-msgs ros-jazzy-backward-ros ros-jazzy-bond ros-jazzy-bondcpp ros-jazzy-test-msgs ros-jazzy-behaviortree-cpp ros-jazzy-map-msgs ros-jazzy-ompl ros-jazzy-rviz-common ros-jazzy-rviz-default-plugins ros-jazzy-nav2-minimal-tb3-sim libeigen3-dev libjsoncpp-dev libspdlog-dev libcurl4-openssl-dev libopencv-dev libpcl-dev libqt5svg5-dev libqt5opengl5-dev libsqlite3-dev libproj-dev libyaml-cpp-dev libfreenect-dev libvtk9-qt-dev libvtk9-dev libgeographiclib-dev libboost-all-dev libtbb-dev libgraphicsmagick++-dev libnanoflann-dev nlohmann-json3-dev libbenchmark-dev
+RUN apt install -y ros-jazzy-ros2-socketcan libasio-dev libceres-dev ros-jazzy-diagnostic-updater ros-jazzy-rtcm-msgs ros-jazzy-nmea-msgs ros-jazzy-pcl-ros ros-jazzy-geographic-msgs ros-jazzy-backward-ros ros-jazzy-bond ros-jazzy-bondcpp ros-jazzy-test-msgs ros-jazzy-behaviortree-cpp ros-jazzy-map-msgs ros-jazzy-ompl ros-jazzy-rviz-common ros-jazzy-rviz-default-plugins ros-jazzy-nav2-minimal-tb3-sim ros-jazzy-rtabmap-ros libeigen3-dev libjsoncpp-dev libspdlog-dev libcurl4-openssl-dev libopencv-dev libpcl-dev libqt5svg5-dev libqt5opengl5-dev libsqlite3-dev libproj-dev libyaml-cpp-dev libfreenect-dev libvtk9-qt-dev libvtk9-dev libgeographiclib-dev libboost-all-dev libtbb-dev libgraphicsmagick++-dev libnanoflann-dev nlohmann-json3-dev libbenchmark-dev
 
 # Fix github 'unsafe' directory
 USER ${USERNAME}

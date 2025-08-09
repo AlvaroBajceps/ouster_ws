@@ -1,8 +1,3 @@
-networks:
-  default:
-    name: ros-core-network          # This network is a direct dependency to ros-core container
-    external: true
-
 services:
   ros-ouster:
     build:
@@ -14,8 +9,7 @@ services:
     container_name: ros-ouster
     hostname: ros-ouster
     init: true
-    ports:
-      - "2622:22"
+    network_mode: host
     environment:
       - TZ=Europe/Warsaw
       - ROS_ENABLE_AUTOSTART=0
@@ -31,4 +25,5 @@ services:
         target: /etc/init.d/rex
         bind:
           create_host_path: true
+      - "./.devcontainer/sshd_config:/etc/ssh/sshd_config"
     restart: unless-stopped
